@@ -1,14 +1,13 @@
 # TidyTuesday
-TidyTuesday Plots
+
+## Latest Visualizations
+
+### **Doctor Who... Is Your Favorite? (2021W48)**
+Exploring average ratings per episode by Doctor from various Doctor Who seasons.
+![Screenshot](2021/W48/doctor_who_chart.png)
 
 
-**Global Seafood - Top 10 Countries Over Time by Captured Fisheries Production**
-![Alt Text](https://github.com/tashapiro/TidyTuesday/blob/master/global-seafood.gif)
+### **Cricket World Cup 1996 (2021W48)**
+Table graphic summarizing outcomes and scores from World Cricket 1996 (data from ESPN). 
+![Screenshot](2021/W49/cricket_world_cup.png)
 
-
-**FIFA Women's World Cup**
-![Screenshot](fifa_women_world_cup.png)
-
-
-**Video Game Ratings by Publisher**
-![Screenshot](video_games.png)
