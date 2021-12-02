@@ -5,12 +5,18 @@
 
 | Week | Topic         | Visual                                                                    | Source                                                                                                                           |
 |:---:|:--------------|:---------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|
-| [48](2021/W48)| Doctor Who     | Doctor Who...Was The Best?                | datardis                                                                                                                                                                                               |
-| [49](2021/W49)  | Cricket      | Cricket World Cup 1996       | ESPN |
+| [29](W29)  | Scooby-Doo      | Scooby-Doo: Are Female Characters Damsels in Distress?       | Kaggle |
+| [48](W48)| Doctor Who     | Doctor Who...Was The Best?                | datardis                                                                                                                                                                                               |
+| [49](W49)  | Cricket      | Cricket World Cup 1996       | ESPN |
 
 
  
 ## :bar_chart: &nbsp; Visualizations
+
+
+### **[Scooby-Doo: Are Female Characters Damsels in Distress? (2021W29)](W29)**
+Analysis of Scooby Doo episodes, visualization represents # of episodes a character caught a monster vs. was captured by a monser. Data from Kaggle. Beautiful character icons from graphic designer, [Jory Raphael](https://dribbble.com/shots/2189161-Scooby-Doo-Icons).
+![Screenshot](W29/scooby-doo.jpeg)
 
 ### **[Doctor Who... Was The Best? (2021W48)](2021/W48)**
 Exploring average ratings per episode by Doctor from various Doctor Who seasons. Data visualization inspired by [Cédirc Scherer](https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/).
