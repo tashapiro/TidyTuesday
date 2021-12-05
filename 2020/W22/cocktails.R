@@ -59,7 +59,7 @@ cocktails<-cocktails%>%
     ingredient_type = case_when(
       grepl('JUICE|TROPICANA|SYRUP|GRENADINE|SUGAR',ingredient) ~ 'JUICE/SWEETENER',
       grepl('BITTERS',ingredient) ~ 'BITTERS',
-      grepl('VERMOUTH|CHAMPAGNE',ingredient) ~ 'OTHER ALCOHOL',
+      grepl('VERMOUTH|CHAMPAGNE|COGNAC',ingredient) ~ 'OTHER ALCOHOL',
       grepl('VODKA|ABSOLUT',ingredient) ~ 'VODKA',
       grepl('TEQUILA',ingredient) ~ 'TEQUILA',
       grepl('COINTREAU|TRIPLE SEC|LIQUEUR|CREME|SCHNAPPS',ingredient) ~ 'LIQUEUR',
