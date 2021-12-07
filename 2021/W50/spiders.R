@@ -42,13 +42,13 @@ net_spiders <- as.network(x = sample, # the network object
 net_spiders %v% "nodecolor" = ifelse(grepl(paste0(family$family, collapse="|"),
                                            network.vertex.names(net_spiders)),"FAMILY",
                               ifelse(substr(network.vertex.names(net_spiders),1,1)==toupper(substr(network.vertex.names(net_spiders),1,1)),
-                                     "SPECIES","GENUS"))
+                                     "GENUS","SPECIES"))
 #create nodesize
 net_spiders %v% "size" = ifelse(substr(network.vertex.names(net_spiders),1,1)==toupper(substr(network.vertex.names(net_spiders),1,1)),
                                 sample[match(network.vertex.names(net_spiders),sample$from_id),]$size,1)
 
 #palette
-col = c("FAMILY" = "#F39237", "SPECIES" = "#BF1363", "GENUS" = "#0E79B2")
+col = c("FAMILY" = "#F39237", "GENUS" = "#BF1363", "SPECIES" = "#0E79B2")
 col_font = "white"
 col_label = "white"
 col_background = '#191923'
