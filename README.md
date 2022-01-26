@@ -2,6 +2,10 @@
 
 ## Latest Visualizations
 
+### **[Board Game Favorites (2022W4)](2022/W44)**
+Popular board games throughout the ages based on ownership. Data from BoardGameGeek.
+![Screenshot](2022/W4/board_games.png)
+
 ### **[Doctor Who... Was The Best? (2021W48)](2021/W48)**
 Exploring average ratings per episode by Doctor from various Doctor Who seasons. Data visualization inspired by [Cédirc Scherer](https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/).
 ![Screenshot](2021/W48/doctor_who_chart.png)
