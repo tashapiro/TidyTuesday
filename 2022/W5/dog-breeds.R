@@ -36,8 +36,8 @@ names(t)[data]<-"group"
 #radar plot
 data%>%
   ggradar(
-    grid.min = 0, grid.mid = 2.5, grid.max = 5,
-    values.radar = c("0", "2.5","5"),
+    grid.min = 1, grid.mid = 3, grid.max = 5,
+    values.radar = c("1", "3","5"),
     group.point.size = 2 ,
     group.line.width = 1 ,
     grid.label.size=4,
@@ -47,7 +47,7 @@ data%>%
   )+
   facet_wrap(vars(group), ncol=5)+
   labs(title="PERSONALITIES OF PAWPULAR DOG BREEDS",
-       subtitle="Based on traits scaled from 1 (low) to 5 (high). Popularity rank based on American Kennel Club registration statistics from 2020.",
+       subtitle="Personalitased on traits scaled from 1 (low) to 5 (high). Popularity rank based on American Kennel Club registration statistics from 2020.",
        caption="Data from the American Kennel Club | Chart by @tanya_shapiro")+
   theme_void()+
   theme(legend.position="none",
@@ -57,5 +57,9 @@ data%>%
         plot.caption=element_text(size=10),
         plot.margin=margin(20,0,10,0),
         plot.title=element_text(hjust=0.5, face="bold", size=18, margin=margin(0,0,10,0)))
+
+
+ggsave("Dog-Breeds.jpeg", height=10, width=14)
+
 
 
