@@ -9,7 +9,7 @@ Taken directly from the [R For Data Science](https://github.com/rfordatascience/
 ## Latest Visualizations
 
 ### **[Erasmus Student Mobility (2022W10)](2022/W10)**
-Popular board games throughout the ages based on ownership. Data from BoardGameGeek.
+Student mobility among top participating countries (based on # of students sent and received) between 2014 and 2020.
 ![Screenshot](2022/W10/erasmus.jpeg)
 
 ### **[Board Game Favorites (2022W4)](2022/W4)**
