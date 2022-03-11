@@ -1,8 +1,18 @@
 # TidyTuesday
 
+## About
+
+Taken directly from the [R For Data Science](https://github.com/rfordatascience/tidytuesday) TidyTuesday README:
+
+> A weekly data project aimed at the R ecosystem. As this project was borne out of the R4DS Online Learning Community and the R for Data Science textbook, an emphasis was placed on understanding how to summarize and arrange data to make meaningful charts with ggplot2, tidyr, dplyr, and other tools in the tidyverse ecosystem. However, any code-based methodology is welcome - just please remember to share the code used to generate the results.
+
 ## Latest Visualizations
 
-### **[Board Game Favorites (2022W4)](2022/W44)**
+### **[Erasmus Student Mobility (2022W10)](2022/W10)**
+Popular board games throughout the ages based on ownership. Data from BoardGameGeek.
+![Screenshot](2022/W10/erasmus.jpeg)
+
+### **[Board Game Favorites (2022W4)](2022/W4)**
 Popular board games throughout the ages based on ownership. Data from BoardGameGeek.
 ![Screenshot](2022/W4/board_games_visual.png)
 
