@@ -10,8 +10,8 @@ Taken directly from the [R For Data Science](https://github.com/rfordatascience/
 
 I've categorized the code for graphics based on year. You can find code notebooks and more visuals in the sub repositories listed below. Within these folders, you will find code organized by week (e.g. W1, W2, etc).
 
-- [TidyTuesday 2021](2021)
 - [TidyTuesday 2022](2022)
+- [TidyTuesday 2021](2021)
 
 ## Gallery of Examples
 
