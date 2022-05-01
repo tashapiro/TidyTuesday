@@ -1,4 +1,6 @@
-## Summary
+# TidyTuesday 2022
+
+## :memo: &nbsp; Summary
 
 |    Week   | Topic                     | Visual                               | Source                 |
 |:---------:|---------------------------|--------------------------------------|------------------------|
@@ -10,7 +12,7 @@
 | [12](W12) | Baby Names                | Alexa, How Popular is Your Name?     | R package babynames    |
 
 
-## Visualizations
+## :bar_chart: &nbsp; Visualizations
 
 
 ### **[W1 - Peloton Instructor Summary](W1)**
