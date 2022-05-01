@@ -13,7 +13,7 @@ I've categorized the code for graphics based on year. You can find code notebook
 - [TidyTuesday 2021](2021)
 - [TidyTuesday 2022](2022)
 
-## Latest Visualizations
+## Gallery of Examples
 
 ### **[Erasmus Student Mobility (2022W10)](2022/W10)**
 Student mobility among top participating countries (based on # of students sent and received) between 2014 and 2020.
@@ -26,7 +26,6 @@ Popular board games throughout the ages based on ownership. Data from BoardGameG
 ### **[Doctor Who... Was The Best? (2021W48)](2021/W48)**
 Exploring average ratings per episode by Doctor from various Doctor Who seasons. Data visualization inspired by [Cédirc Scherer](https://www.cedricscherer.com/2019/05/17/the-evolution-of-a-ggplot-ep.-1/).
 ![Screenshot](2021/W48/doctor_who_chart.png)
-
 
 ### **[Cricket World Cup 1996 (2021W49)](2021/W49)**
 Table graphic summarizing outcomes and scores from World Cricket 1996 (data from ESPN). 
