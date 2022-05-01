@@ -2,12 +2,13 @@
 
 
 ## :memo: &nbsp; Summary
-
-| Week | Topic         | Visual                                                                    | Source                                                                                                                           |
-|:---:|:--------------|:---------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------|
-| [29](W29)  | Scooby-Doo      | Scooby-Doo: Are Female Characters Damsels in Distress?       | Kaggle |
-| [48](W48)| Doctor Who     | Doctor Who...Was The Best?                | datardis                                                                                                                                                                                               |
-| [49](W49)  | Cricket      | Cricket World Cup 1996       | ESPN |
+| Week        | Topic           | Visual                                                 | Source   |
+|:-----------:|-----------------|--------------------------------------------------------|----------|
+| [29](W29)   | Scooby-Doo      | Scooby-Doo: Are Female Characters Damsels in Distress? | Kaggle   |
+| [48](W48)   | Doctor Who      | Doctor Who...Was The Best?                             | datardis |
+| [49](W49)   | Cricket         | Cricket World Cup 1996                                 | ESPN     |
+| [50](W50)   | Spider Taxonomy | A Tangled Web of Spider Taxonomy                       |          |
+| [51](W51)   | Spice Girls     | Anatomy of Spice Girls Hits                            |          |
 
 
  
