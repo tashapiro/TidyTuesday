@@ -15,6 +15,10 @@ I've categorized the code for graphics based on year. You can find code notebook
 
 ## Gallery of Examples
 
+
+### **[Top iPhone App Tags (2022W40)](2022/W40)**
+![Screenshot](2022/W40/iphone-plot.png)
+
 ### **[Erasmus Student Mobility (2022W10)](2022/W10)**
 Student mobility among top participating countries (based on # of students sent and received) between 2014 and 2020.
 ![Screenshot](2022/W10/erasmus.jpeg)
