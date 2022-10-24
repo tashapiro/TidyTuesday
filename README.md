@@ -23,6 +23,9 @@ I've categorized the code for graphics based on year. You can find code notebook
 Student mobility among top participating countries (based on # of students sent and received) between 2014 and 2020.
 ![Screenshot](2022/W10/erasmus.jpeg)
 
+### **[NYT Best Sellers (2022W19)](2022/W19)**
+![Screenshot](2022/W19/nyt_authors.png)
+
 ### **[Board Game Favorites (2022W4)](2022/W4)**
 Popular board games throughout the ages based on ownership. Data from BoardGameGeek.
 ![Screenshot](2022/W4/board_games_visual.png)
