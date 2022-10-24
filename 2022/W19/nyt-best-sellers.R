@@ -97,7 +97,7 @@ pal_text2<-"#D6D6D6"
 pal_line<-"#606060"
 font_sans<-"opensans"
 
-
+#dataset to create sparklines witin ggplot -- note, plot uses reverse y axis - apply calc to adjust y values (scale them too)
 sparkline<-yearly|>
   left_join(subset|>select(author, decade, rank), by=c("author"="author","decade"="decade"))|>
   filter(!is.na(rank))|>
