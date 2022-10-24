@@ -119,8 +119,8 @@ ggplot(subset)+
   geom_line(data = sparkline, mapping=aes(x=x, y=adjust, group=author), color="white", size=0.2)+
   geom_text(data = sparkline|>filter(x==min(sparkline$x)), mapping=aes(x=x-.07, y=adjust, label=years), hjust=1, color="white", size=1.5)+
   geom_text(data = sparkline|>filter(x==max(sparkline$x)), mapping=aes(x=x+.07, y=adjust, label=years), hjust=0, color="white", size=1.5)+
-  geom_image(data=subset|>filter(decade<2020), mapping=aes(y=rank, x=4.6, image=image), size=0.115, asp=1.2, color=pal_text2)+
-  geom_image(data=subset|>filter(decade<2020), mapping=aes(y=rank, x=4.6, image=image), size=0.11, asp=1.2)+
+  geom_image(data=subset, mapping=aes(y=rank, x=4.6, image=image), size=0.115, asp=1.2, color=pal_text2)+
+  geom_image(data=subset, mapping=aes(y=rank, x=4.6, image=image), size=0.11, asp=1.2)+
   facet_wrap(~decade_label)+
   scale_y_reverse(limits=c(5.6,0.25), expand=c(0,0))+
   scale_x_continuous(limits=c(0.5,5))+
