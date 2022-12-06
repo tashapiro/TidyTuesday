@@ -1,135 +1,133 @@
-library(tidytuesdayR)
-library(png)
+library(tidyverse)
 library(ggimage)
-library(ggplot2)
-library(dplyr)
+library(glue)
+library(sysfonts)
+library(showtext)
+library(ggtext)
+library(geomtextpath)
 
-#load tidy tuesday data
+#import data
 tuesdata <- tidytuesdayR::tt_load('2021-11-23')
 
-#break out data sets
-directors <- tuesdata$directors
-writers <- tuesdata$writers
+#break out data for eps
 episodes<-tuesdata$episodes
-imdb<-tuesdata$imdb
+#base url for images
+base_url = "https://raw.githubusercontent.com/tashapiro/TidyTuesday/master/2021/W48/images/"
 
-#list of doctors from seasons
-doctor<-c("Christopher Eccleston","David Tennant","David Tennant","David Tennant",
-           "Matt Smith","Matt Smith","Matt Smith","Peter Capaldi","Peter Capaldi",
-           "Peter Capaldi","Jodie Whittaker","Jodie Whittaker","Jodie Whittaker")
-season<-1:13
-doctors<-data.frame(season,doctor)
+#data frame for doctors
+df_doctor<-data.frame(
+  doctor = c("Christopher Eccleston",
+             rep("David Tennant",3),
+             rep("Matt Smith",3),
+             rep("Peter Capaldi",3),
+             rep("Jodie Whitaker",3)),
+  doctor_num = c("Ninth Doctor",
+             rep("Tenth Doctor",3),
+             rep("Eleventh Doctor",3),
+             rep("Twelfth Doctor",3),
+             rep("Thirteenth Doctor",3)),
+  season= 1:13
+)
 
-#create main data frame
-df<- left_join(episodes,directors, by=c("story_number"="story_number"))
-df<- left_join(df,doctors, by=c("season_number"="season"))
-df<- df%>%filter(type=="episode")
+df_doctor$image<-paste0(base_url,str_replace(df_doctor$doctor," ","_"),".png")
 
-#summarize data by doctor
-doc_summary<-df%>%group_by(doctor)%>%
-  summarise(avg_doc_rating=mean(rating, na.rm=TRUE),
-            avg_doc_viewers=mean(uk_viewers, na.rm=TRUE))
+#data
+df_eps<-episodes|>
+  left_join(df_doctor,by=c("season_number"="season"))|>
+  filter(!is.na(rating) & !is.na(season_number))|>
+  group_by(doctor)|>
+  mutate(avg_rating = mean(rating))|>
+  ungroup()
 
-#join averages by doctor to main df 
-df <-left_join(df, doc_summary, by=c("doctor"="doctor"))
-df$avg_rating<-mean(df$rating, na.rm=TRUE)
+overall_avg <-mean(df_eps$rating)
 
-#palettes
-col_back<-"#00060b"
-col_text<-"white"
-col_line<-"white"
+df_doc_avg<-df_eps|>distinct(doctor, doctor_num, image, avg_rating)|>
+  mutate(label = glue("<span style='font-size:10pt;'>**{doctor}**</span><br><span style='font-size:8pt;'>{doctor_num}</span>"))
+
+
+#pre-set aesthetics
 pal<-c(
-'#D9695F', #red
-'#658C5A', #green
-'#F2BE5C', #orange
-'#5C4673', #puprle
-'#72A5B8' #lightblue
+  '#D9695F', #red
+  '#658C5A', #green
+  '#F2BE5C', #orange
+  '#5C4673', #puprle
+  '#72A5B8' #lightblue
 )
 
-#append images from local
-df$image<-ifelse(df$doctor=="Peter Capaldi","peter_c.png",
-                 ifelse(df$doctor=="David Tennant","david_t.png",
-                        ifelse(df$doctor=="Jodie Whittaker","jodie_w.png",
-                               ifelse(df$doctor=="Matt Smith","matt_s.png",
-                               "chris_e.png"))))
-                        
-                 
+pal_line = "white"
+pal_text = "white"
+pal_bg = "black"
 
+sysfonts::font_add('fb', 'fonts/Font Awesome 6 Brands-Regular-400.otf')
+sysfonts::font_add_google("Open Sans","Open Sans")
+sysfonts::font_add_google("Open Sans","os")
 
+showtext::showtext_auto()
+showtext::showtext_opts(dpi = 300)
 
+#titles & labels for {ggtext}
+caption<-paste0(
+  "<span style='font-family:os;'>Source: {datardis}</span><br>",
+  "<span style='font-family:fb;'>&#xf099;</span>",
+  "<span style='font-family:os;'>@tanya_shapiro</span>",
+  "<span style='font-family:os;color:black;'>...</span>",
+  "<span style='font-family:fb;'>&#xf09b;</span>",
+  "<span style='font-family:os;'> tashapiro </span>")
 
+title<-"<p style='color:#FFD495;'>Doctor Who<span style='color:white;'> was The Best?</span></p>"
 
-p<-ggplot(df, aes(x=reorder(doctor, avg_doc_rating), y=rating))+
-  geom_jitter(aes(color=doctor), size=5, alpha = 0.6, width = 0.15)+
-  geom_hline(aes(yintercept = avg_rating), color = col_line, size = 0.5) +
-  geom_segment(aes(x = doctor, xend = doctor,y = avg_rating, yend = avg_doc_rating), size = 0.5, color=col_line)+
-  geom_point(aes(x=doctor, y=avg_doc_rating), color="white",size=18)+
-  geom_image(aes(x=doctor, y=avg_doc_rating,image=image),asp=1.5)+
-  geom_text(aes(x=doctor, y=avg_doc_rating, label=round(avg_doc_rating,2)), family="Gill Sans",size=3.5, vjust=5, color=col_text)+
-  scale_fill_manual(values=pal)+
-  scale_color_manual(values=pal)+
-   coord_flip()+
-  labs(
-    title='DOCTOR WHO...WAS THE BEST?',
-    subtitle = "Ratings Per Doctor Who Episode, Scaled 1-100",
-    x="DOCTOR",
-    y="RATINGS",
-    caption="Data from datardis | Chart @tanya_shapiro"
+subtitle<-paste0("<span style='color:#D1D1D1;'>Ratings by Episode and Doctor for the popular TV series, Doctor Who.</span>")
+
+ggplot()+
+  geom_jitter(data=df_eps, 
+              mapping = aes(x=rating, y=reorder(doctor,avg_rating), color=doctor),
+              show.legend = FALSE, size=3, alpha=0.6, height=0.2
   )+
-  annotate("text", x = 1.7, y = 87, family="Gill Sans", color=col_text, label ='Overall Average: 84.17')+
-  annotate("text", x = 2.5, y = 79, family="Gill Sans", color=col_text, label ='Average Per Doctor')+
-  annotate("text", x = 5, y = 81.3, family="Gill Sans", color=col_text, label ='Episode Rating')+
-  theme_void()+
-  theme(text=element_text(family="Gill Sans",color=col_text),
-        plot.title=element_text(family="Gill Sans Bold",color=col_text,size=18),
-        plot.caption =element_text(size=12, vjust=-3,hjust=0.98),
-        plot.subtitle=element_text(size=14),
-        plot.margin = unit(c(0, 0, 0.8, 0), "cm"),
-        legend.position="none",
-        legend.text=element_text(color=col_text),
-        axis.title.x=element_text(color=col_text),
-        axis.text=element_text(color=col_text),
-        axis.text.y=element_text(color=col_text,size=14),
-        axis.ticks.x=element_line(color="white"),
-        plot.background = element_rect(col_back))
-
-#add arrows
-arrows <- tibble(
-  x1 = c(1.58, #Avg Overall
-         2.6, #Avg Per Doc
-         2.4, #Avg Per Doc
-         4.9  #Ep Rating
-  ),
-  x2 = c(1.3,  #Avg Overall
-         3,
-         2,
-         4.8
-  ),
-  y1 = c(86.2,  #Avg Overall
-         80, #Avg Per Publisher
-         80, #Avg Per Publisher
-         81.5
-  ),
-  y2 = c(84.25,  #Avg Overall
-         82.3, #Avg Per Publisher
-         81.75, #Avg Per Publisher
-         83.3
-  ),
-  curve = c("up","up","down","down")
-)
-
-
-
-
-
-p + geom_curve(data = arrows%>%filter(curve=="up"), aes(x = x1, y = y1, xend = x2, yend = y2),
-                  arrow = arrow(length = unit(0.07, "inch")), size = 0.4,
-                  color = "white", curvature =-0.15)+
-  geom_curve(data = arrows%>%filter(curve=="down"), aes(x = x1, y = y1, xend = x2, yend = y2),
-             arrow = arrow(length = unit(0.07, "inch")), size = 0.4,
-             color = "white", curvature =0.15)
+  geomtextpath::geom_textvline(mapping=aes(xintercept=overall_avg, label=paste0("Overall Avg: ",round(overall_avg,0))), 
+             size=3, color=pal_line, hjust=0.86, vjust=-.6, family="Open Sans")+
+  geom_segment(data=df_doc_avg, 
+               mapping = aes(x=avg_rating, xend=overall_avg, y=doctor, yend=doctor),
+               color=pal_line)+
+  geom_point(data=df_doc_avg, 
+             mapping=aes(x=avg_rating, y=doctor),
+             size=14.5, color="white")+
+  geom_image(data=df_doc_avg, 
+             mapping=aes(x=avg_rating, y=doctor, image=image),
+             size = 0.06, asp=1.61)+
+  geom_text(data=df_doc_avg, 
+             mapping=aes(x=avg_rating, y=doctor, label=round(avg_rating,1)),
+             size=2.75, color="white", vjust=4.5, family="Open Sans")+
+  geom_textbox(data=df_doc_avg, 
+            mapping=aes(x=59.1, y=doctor, label=label),
+            family="Open Sans", fill=NA, box.size=NA, box.padding=unit(rep(0,4),"pt"),
+            color=pal_text, hjust=0)+
+  #arrows
+  annotate(geom="text",label="Avg Rating\nper Doctor", x=76, y=2.5,
+           size=2.5, color="white", family="Open Sans")+
+  geom_curve(mapping=aes(x=77, xend=81.4, y=2.7, yend=3), 
+             color="white", curvature=-0.2, linewidth=0.3, arrow=arrow(length=unit(0.08,"in")))+
+  geom_curve(mapping=aes(x=77, xend=80.8, y=2.3, yend=2), 
+             color="white", curvature=0.2, linewidth=0.3, arrow=arrow(length=unit(0.08,"in")))+
+  scale_x_continuous(limits=c(59,95), expand=c(0,0), breaks=c(70, 75,80,85,90,95))+
+  scale_color_manual(values=pal)+
+  coord_equal(ratio = 50/12)+
+  labs(title=title,
+       subtitle=subtitle,
+       caption = caption,
+       x="<span style='font-size:11pt;'>Episode Rating</span><br><span style='font-size:8pt;'>(out of 100) </span>")+
+  theme(plot.background = element_rect(fill=pal_bg, color=pal_bg), 
+        panel.background = element_blank(), 
+        panel.grid=element_blank(),
+        plot.margin = margin(l=20, r=40, b=10, t=20),
+        plot.caption = element_textbox_simple(size=7, color="grey80"),
+        plot.title = element_textbox_simple(size=14, face="bold", margin = margin(b=5)),
+        plot.subtitle  = element_textbox_simple(size=9),
+        text = element_text(color=pal_text, family="Open Sans"),
+        axis.text = element_text(color=pal_text),
+        axis.text.y=element_blank(),
+        axis.title.y=element_blank(),
+        axis.title.x=element_textbox_simple(margin=margin(t=10), halign=0.675, hjust=0.5),
+        axis.ticks=element_blank())
 
 
-
-ggsave("doctor_who.png", width=12, height=8)
-
+ggsave("doctor_who.png", width=8, height=6)
