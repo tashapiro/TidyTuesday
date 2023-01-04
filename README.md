@@ -17,7 +17,7 @@ I've categorized the code for graphics based on year. You can find code notebook
 ## Gallery of Examples
 
 
-### **Netflix Content Expansion (2023W1)](2023/W1)**
+### **[Netflix Content Expansion (2023W1)](2023/W1)**
 ![Screenshot](2023/W1/netflix.png)
 
 ### **[Top iPhone App Tags (2022W40)](2022/W40)**
