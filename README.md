@@ -10,11 +10,15 @@ Taken directly from the [R For Data Science](https://github.com/rfordatascience/
 
 I've categorized the code for graphics based on year. You can find code notebooks and more visuals in the sub repositories listed below. Within these folders, you will find code organized by week (e.g. W1, W2, etc).
 
+- [TidyTuesday 2023](2023)
 - [TidyTuesday 2022](2022)
 - [TidyTuesday 2021](2021)
 
 ## Gallery of Examples
 
+
+### **Netflix Content Expansion (2023W1)](2023/W1)**
+![Screenshot](2023/W1/netflix.png)
 
 ### **[Top iPhone App Tags (2022W40)](2022/W40)**
 ![Screenshot](2022/W40/iphone-plot.png)
