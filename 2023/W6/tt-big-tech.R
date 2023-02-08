@@ -49,7 +49,7 @@ df_values <- df_sp|>
   select(stock_symbol, date, close)|>
   mutate(close = round(close,2))|>
   pivot_wider(id_cols=stock_symbol, names_from = date, values_from = close)|>
-  rename(value_1m = 2, value_6m = 3, value_1y = 4)
+  rename(value_1y = 2, value_6m = 3, value_1m = 4)
 
 df_table<- df_last_sp|>
   left_join(df_values, by="stock_symbol")|>
