@@ -70,19 +70,6 @@ df_table<- df_last_sp|>
 base_url = "https://raw.githubusercontent.com/tashapiro/TidyTuesday/master/2023/W6/logos/"
 
 
-#function modified from https://glin.github.io/reactable/articles/cookbook/cookbook.html
-status_badge <- function(color = "#aaa", width = "0.55rem", height = width) {
-  span(style = list(
-    display = "inline-block",
-    marginRight = "0.5rem",
-    width = width,
-    height = height,
-    backgroundColor = color,
-    borderRadius = "50%"
-  ))
-}
-
-
 table = reactable(data=df_table,
           fullWidth = FALSE,
           defaultPageSize=14,
