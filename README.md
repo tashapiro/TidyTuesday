@@ -16,6 +16,8 @@ I've categorized the code for graphics based on year. You can find code notebook
 
 ## Gallery of Examples
 
+### **[The Rise & Fall of Big Tech 2022](2023/W6)**
+![Screenshot](2023/W6/big-tech-stocks.png)
 
 ### **[Netflix Content Expansion (2023W1)](2023/W1)**
 ![Screenshot](2023/W1/netflix.png)
